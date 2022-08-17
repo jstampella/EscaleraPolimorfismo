@@ -51,7 +51,6 @@ namespace guia4Poli
                 if (ganadores.Count == cantJuegadores - 1) haFinalizado = true;
             }
             return haFinalizado;
-            return haFinalizado;
         }
 
         private void ComprobarElementos(Jugador jugador)

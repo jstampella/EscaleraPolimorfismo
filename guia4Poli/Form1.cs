@@ -10,16 +10,24 @@ using System.Windows.Forms;
 
 namespace guia4Poli
 {
+    public enum Niveles
+    {
+        Basico, Avanzado
+    }
     public partial class Form1 : Form
     {
+
         Tablero juego;
         int limitJugadores = 4;
         int jugadorH = 1;
         int jugadorM = 1;
+        Bitmap[] mapas = new Bitmap[3];
         JugadorForm jugadorForm = new JugadorForm();
         public Form1()
         {
             InitializeComponent();
+            mapas[0] = Properties.Resources.background2;
+            mapas[1] = Properties.Resources.background;
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -75,38 +83,6 @@ namespace guia4Poli
             }
         }
 
-        private void numericUpDown1_MouseUp(object sender, MouseEventArgs e)
-        {
-            //if (e.Button == System.Windows.Forms.MouseButtons.Right || e.Button == System.Windows.Forms.MouseButtons.Left)
-            //{
-            //    NumericUpDown np = null;
-            //    NumericUpDown np2 = null;
-            //    if (((NumericUpDown)sender).Name == "inpHum")
-            //        np = (NumericUpDown)sender;
-            //    else
-            //    {
-            //        np2 = (NumericUpDown)sender;
-            //    }
-
-            //    if (jugadorH + jugadorM + 1 <= limitJugadores)
-            //        if (np != null)
-            //            jugadorH = Convert.ToInt16(np.Value);
-            //        else
-            //        {
-            //            jugadorM = Convert.ToInt16(np2.Value);
-            //        }
-            //    else
-            //    {
-            //        MessageBox.Show("Limite maximo 4 en total");
-            //        if (np != null)
-            //            np.Value = jugadorH;
-            //        else
-            //        {
-            //            np2.Value = jugadorM;
-            //        }
-            //    }
-            //}
-        }
 
         private void inpMaq_ValueChanged(object sender, EventArgs e)
         {
@@ -128,9 +104,34 @@ namespace guia4Poli
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cbNivel.Items.Add("Basico");
-            cbNivel.Items.Add("Avanzado");
+            cbNivel.Items.Add(Niveles.Basico.ToString());
+            cbNivel.Items.Add(Niveles.Avanzado.ToString());
             cbNivel.SelectedIndex = 0;
+            panelGraf.BackgroundImage = mapas[0];
+        }
+
+        private void cbNivel_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if(cbNivel.SelectedIndex == 1)
+            {
+                btnTablero.Visible = true;
+            }
+            else
+            {
+                btnTablero.Visible = false;
+            }
+        }
+
+        private void btnTablero_Click(object sender, EventArgs e)
+        {
+            if(panelGraf.BackgroundImage == mapas[0])
+            {
+                panelGraf.BackgroundImage = mapas[1];
+            }
+            else
+            {
+                panelGraf.BackgroundImage = mapas[0];
+            }
         }
     }
 }

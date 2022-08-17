@@ -39,7 +39,8 @@
             this.cbNivel = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelGraf = new System.Windows.Forms.Panel();
+            this.btnTablero = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.inpMaq)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inpHum)).BeginInit();
@@ -125,7 +126,6 @@
             0});
             this.inpMaq.ValueChanged += new System.EventHandler(this.inpMaq_ValueChanged);
             this.inpMaq.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDown1_KeyUp);
-            this.inpMaq.MouseUp += new System.Windows.Forms.MouseEventHandler(this.numericUpDown1_MouseUp);
             // 
             // inpHum
             // 
@@ -174,6 +174,7 @@
             this.cbNivel.Name = "cbNivel";
             this.cbNivel.Size = new System.Drawing.Size(266, 24);
             this.cbNivel.TabIndex = 16;
+            this.cbNivel.SelectedValueChanged += new System.EventHandler(this.cbNivel_SelectedValueChanged);
             // 
             // panel2
             // 
@@ -196,28 +197,50 @@
             this.label5.TabIndex = 17;
             this.label5.Text = "Nivel de Juego";
             // 
-            // panel3
+            // panelGraf
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelGraf.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackgroundImage = global::guia4Poli.Properties.Resources.background;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Location = new System.Drawing.Point(76, 86);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(136, 129);
-            this.panel3.TabIndex = 18;
+            this.panelGraf.BackgroundImage = global::guia4Poli.Properties.Resources.background;
+            this.panelGraf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panelGraf.Location = new System.Drawing.Point(76, 86);
+            this.panelGraf.Name = "panelGraf";
+            this.panelGraf.Size = new System.Drawing.Size(136, 129);
+            this.panelGraf.TabIndex = 18;
+            // 
+            // btnTablero
+            // 
+            this.btnTablero.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTablero.AutoEllipsis = true;
+            this.btnTablero.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnTablero.BackColor = System.Drawing.Color.IndianRed;
+            this.btnTablero.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTablero.ForeColor = System.Drawing.Color.Transparent;
+            this.btnTablero.Location = new System.Drawing.Point(218, 128);
+            this.btnTablero.MinimumSize = new System.Drawing.Size(50, 20);
+            this.btnTablero.Name = "btnTablero";
+            this.btnTablero.Size = new System.Drawing.Size(70, 58);
+            this.btnTablero.TabIndex = 19;
+            this.btnTablero.Text = "Otro";
+            this.btnTablero.UseVisualStyleBackColor = false;
+            this.btnTablero.Visible = false;
+            this.btnTablero.Click += new System.EventHandler(this.btnTablero_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(298, 404);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.btnTablero);
+            this.Controls.Add(this.panelGraf);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCrear);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -243,7 +266,8 @@
         private System.Windows.Forms.ComboBox cbNivel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelGraf;
+        private System.Windows.Forms.Button btnTablero;
     }
 }
 
