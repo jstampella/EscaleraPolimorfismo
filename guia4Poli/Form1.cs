@@ -125,5 +125,12 @@ namespace guia4Poli
                 }
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cbNivel.Items.Add("Basico");
+            cbNivel.Items.Add("Avanzado");
+            cbNivel.SelectedIndex = 0;
+        }
     }
 }
