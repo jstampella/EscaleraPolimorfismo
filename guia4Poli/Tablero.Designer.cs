@@ -320,6 +320,7 @@
             this.Controls.Add(this.panelJugador);
             this.Controls.Add(this.btnNuevaRon);
             this.Name = "Tablero";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Tablero";
             this.Shown += new System.EventHandler(this.Tablero_Shown);
             this.panelDados.ResumeLayout(false);
