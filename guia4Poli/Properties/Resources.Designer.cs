@@ -93,6 +93,26 @@ namespace guia4Poli.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dados {
+            get {
+                object obj = ResourceManager.GetObject("dados", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dados2 {
+            get {
+                object obj = ResourceManager.GetObject("dados2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fichaAmarillo {
             get {
                 object obj = ResourceManager.GetObject("fichaAmarillo", resourceCulture);

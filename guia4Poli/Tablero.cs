@@ -20,10 +20,24 @@ namespace guia4Poli
         {
             InitializeComponent();
             tablero2.BackgroundImage = Form1.mapas[map];
-            if(map==0)
+            //establece valores para optimizar el parpadeo de los controles
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.DoubleBuffered = true;
+            if (map==0)
                 Juego = new PolimorfisGamer(countJug, nombres);
             else
                 Juego = new RealPolimorfisGamer(countJug, nombres, map);
+        }
+
+    //Evitar el parpadeo de los controles
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;  // Turn on WS_EX_COMPOSITED
+                return cp;
+            }
         }
         #endregion
 
@@ -215,5 +229,15 @@ namespace guia4Poli
         }
 
         #endregion
+
+        private void btnNuevaRon_MouseHover(object sender, EventArgs e)
+        {
+            btnNuevaRon.BackgroundImage = Properties.Resources.dados;
+        }
+
+        private void btnNuevaRon_MouseLeave(object sender, EventArgs e)
+        {
+            btnNuevaRon.BackgroundImage = Properties.Resources.dados2;
+        }
     }
 }

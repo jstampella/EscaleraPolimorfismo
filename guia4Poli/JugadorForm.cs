@@ -24,5 +24,22 @@ namespace guia4Poli
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtNombre.Text != "")
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                lblInfo.Visible = true;
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            lblInfo.Visible = false;
+        }
     }
 }
