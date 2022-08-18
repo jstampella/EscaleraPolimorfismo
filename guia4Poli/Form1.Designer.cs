@@ -202,7 +202,7 @@
             this.panelGraf.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelGraf.BackgroundImage = global::guia4Poli.Properties.Resources.background;
+            this.panelGraf.BackgroundImage = global::guia4Poli.Properties.Resources.backgroundBasic;
             this.panelGraf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panelGraf.Location = new System.Drawing.Point(76, 86);
             this.panelGraf.Name = "panelGraf";

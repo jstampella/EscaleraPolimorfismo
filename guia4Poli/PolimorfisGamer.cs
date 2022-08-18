@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace guia4Poli
 {
+    
     internal class PolimorfisGamer
     {
         protected bool haFinalizado = false;
@@ -59,9 +60,9 @@ namespace guia4Poli
         #region Metodos
         private void CrearColores()
         {
-            colores[0] = Color.FromArgb(204, 0, 0);
-            colores[1] = Color.FromArgb(204, 204, 0);
-            colores[2] = Color.FromArgb(0, 102, 204);
+            colores[1] = Color.FromArgb(204, 0, 0);
+            colores[2] = Color.FromArgb(204, 204, 0);
+            colores[0] = Color.FromArgb(0, 102, 204);
             colores[3] = Color.FromArgb(0, 255, 0);
         }
         public virtual bool JugarRonda()

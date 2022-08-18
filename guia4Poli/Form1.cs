@@ -21,13 +21,15 @@ namespace guia4Poli
         int limitJugadores = 4;
         int jugadorH = 1;
         int jugadorM = 1;
-        Bitmap[] mapas = new Bitmap[3];
+        int mapa = 0;
+        public static Bitmap[] mapas = new Bitmap[3];
         JugadorForm jugadorForm = new JugadorForm();
         public Form1()
         {
             InitializeComponent();
-            mapas[0] = Properties.Resources.background2;
+            mapas[0] = Properties.Resources.backgroundBasic;
             mapas[1] = Properties.Resources.background;
+            mapas[2] = Properties.Resources.background2;
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace guia4Poli
             bool cancelJuego = false;
 
             int count = 0;
-            while (count < jugadorM)
+            while (count < jugadorH)
             {
                 jugadorForm.txtNombre.Text = "";
                 jugadorForm.title.Text = "Jugador: " + (count + 1);
@@ -54,11 +56,11 @@ namespace guia4Poli
             if (!cancelJuego)
             {
                 int cantJugadores = jugadorH + jugadorM;
-                juego = new Tablero(cantJugadores, nombres);
+                juego = new Tablero(cantJugadores, nombres, mapa);
                 this.Hide();
                 while (juego.ShowDialog() == DialogResult.OK)
                 {
-                    juego = new Tablero(cantJugadores, nombres);
+                    juego = new Tablero(cantJugadores, nombres,mapa);
                 }
                 this.Show();
             }
@@ -107,7 +109,7 @@ namespace guia4Poli
             cbNivel.Items.Add(Niveles.Basico.ToString());
             cbNivel.Items.Add(Niveles.Avanzado.ToString());
             cbNivel.SelectedIndex = 0;
-            panelGraf.BackgroundImage = mapas[0];
+            panelGraf.BackgroundImage = mapas[mapa];
         }
 
         private void cbNivel_SelectedValueChanged(object sender, EventArgs e)
@@ -115,22 +117,27 @@ namespace guia4Poli
             if(cbNivel.SelectedIndex == 1)
             {
                 btnTablero.Visible = true;
+                mapa = 1;
+                panelGraf.BackgroundImage = mapas[1];
             }
             else
             {
+                mapa = 0;
                 btnTablero.Visible = false;
             }
         }
 
         private void btnTablero_Click(object sender, EventArgs e)
         {
-            if(panelGraf.BackgroundImage == mapas[0])
+            if(panelGraf.BackgroundImage == mapas[1])
             {
-                panelGraf.BackgroundImage = mapas[1];
+                mapa = 2;
+                panelGraf.BackgroundImage = mapas[2];
             }
             else
             {
-                panelGraf.BackgroundImage = mapas[0];
+                mapa = 1;
+                panelGraf.BackgroundImage = mapas[1];
             }
         }
     }

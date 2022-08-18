@@ -110,5 +110,20 @@
   <ItemGroup>
     <None Include="Resources\background.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgroundBasic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fichaAzul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fichaRoja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fichaAmarillo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fichaVerde.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

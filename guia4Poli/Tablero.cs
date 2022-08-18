@@ -13,12 +13,19 @@ namespace guia4Poli
 {
     public partial class Tablero : Form
     {
-        private RealPolimorfisGamer Juego;
-        public Tablero(int countJug, string[] nombres)
+        private PolimorfisGamer Juego;
+
+        #region Constructor
+        public Tablero(int countJug, string[] nombres,int map)
         {
             InitializeComponent();
-            Juego = new RealPolimorfisGamer(countJug, nombres);
+            tablero2.BackgroundImage = Form1.mapas[map];
+            if(map==0)
+                Juego = new PolimorfisGamer(countJug, nombres);
+            else
+                Juego = new RealPolimorfisGamer(countJug, nombres, map);
         }
+        #endregion
 
         private void Tablero_Shown(object sender, EventArgs e)
         {
@@ -31,6 +38,7 @@ namespace guia4Poli
             }
         }
 
+        #region Funciones custom
         private void CrearLabels(int i, int pts = 0, int d = 0)
         {
             Label txt = new Label();
@@ -56,7 +64,7 @@ namespace guia4Poli
             pColor = new Panel();
             pColor.Size = new Size(15, 15);
             pColor.BackColor = Juego.colores[pos];
-            CambiarColorPanel(pos);
+            //CambiarColorPanel(pos);
             txt.Text = nombre;
             panelColores.Controls.Add(pColor);
             panelJugador.Controls.Add(txt);
@@ -87,11 +95,6 @@ namespace guia4Poli
                 default:
                     break;
             }
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.OK;
         }
 
         private void MostrarAfectados()
@@ -166,30 +169,6 @@ namespace guia4Poli
             }
         }
 
-        private void btnNuevaRon_Click(object sender, EventArgs e)
-        {
-            panelPuntos.Controls.Clear();
-            panelDados.Controls.Clear();
-            if (!Juego.JugarRonda())
-            {
-                Jugador[] jugadores = Juego.ListarJugadores;
-                for (int i = 0; i < Juego.cantJuegadores; i++)
-                {
-                    int pos = jugadores[i].Posicion;
-                    int posY = 9 - ((pos - 1) / 10);
-                    int posX = ((pos - 1) % 10);
-                    CrearLabels(i, pos, jugadores[i].Avance);
-                    // verifica si existe un panel en el row and col
-                    MoverFichas(i, posX, posY);
-                }
-
-                ModificarTamanio();
-                MostrarAfectados();
-            }
-            else FinalizarJuego();
-            if (((Button)sender).Text == "Iniciar Ronda") ((Button)sender).Text = "Proxima Ronda";
-        }
-
         private void FinalizarJuego()
         {
             btnNuevaRon.Visible = false;
@@ -204,5 +183,37 @@ namespace guia4Poli
             MessageBox.Show(msg, "Ganadores", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnNuevo.Visible = true;
         }
+
+        #endregion
+
+        #region Acciones de los controles
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void btnNuevaRon_Click(object sender, EventArgs e)
+        {
+            panelPuntos.Controls.Clear();
+            panelDados.Controls.Clear();
+            Juego.JugarRonda();
+            Jugador[] jugadores = Juego.ListarJugadores;
+            for (int i = 0; i < Juego.cantJuegadores; i++)
+            {
+                int pos = jugadores[i].Posicion;
+                int posY = 9 - ((pos - 1) / 10);
+                int posX = ((pos - 1) % 10);
+                CrearLabels(i, pos, jugadores[i].Avance);
+                // verifica si existe un panel en el row and col
+                MoverFichas(i, posX, posY);
+            }
+
+            ModificarTamanio();
+            MostrarAfectados();
+            if(Juego.HaFinalizado) FinalizarJuego();
+            if (((Button)sender).Text == "Iniciar Ronda") ((Button)sender).Text = "Proxima Ronda";
+        }
+
+        #endregion
     }
 }
